@@ -1,0 +1,183 @@
+@import '@/presentation/styles/module-imports';
+
+// ========================================
+// HEADER COMPONENT STYLES
+// ========================================
+
+.header {
+  @include glass-panel;
+  height: 64px;
+  border-bottom: 1px solid $alpha-border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-6;
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  backdrop-filter: blur(16px);
+}
+
+// ========================================
+// LOGO
+// ========================================
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  text-decoration: none;
+  @include transition;
+
+  &:hover .logoIcon {
+    transform: rotate(90deg);
+  }
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, $color-cyber-cyan, $color-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  box-shadow: $shadow-cyan-md;
+  @include transition(transform, 300ms);
+}
+
+.logoText {
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  color: $color-white;
+  letter-spacing: $letter-spacing-tight;
+
+  .highlight {
+    @include neon-text-cyan;
+  }
+}
+
+// ========================================
+// NAVIGATION
+// ========================================
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: $spacing-6;
+
+  @include respond-to-md {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-slate-400;
+  text-decoration: none;
+  @include transition;
+  position: relative;
+
+  &:hover {
+    color: $color-cyber-cyan;
+  }
+
+  &.active {
+    color: $color-white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, $color-cyber-cyan, transparent);
+      box-shadow: $shadow-cyan-sm;
+    }
+  }
+}
+
+// ========================================
+// USER PROFILE
+// ========================================
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding-left: $spacing-6;
+  border-left: 1px solid $alpha-border;
+}
+
+.userInfo {
+  text-align: right;
+  display: none;
+
+  @include respond-to-sm {
+    display: block;
+  }
+}
+
+.userRank {
+  font-size: $font-size-xs;
+  font-family: $font-mono;
+  color: $color-cyber-cyan;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+}
+
+.userName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+}
+
+.userAvatar {
+  position: relative;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: $radius-full;
+    background: linear-gradient(135deg, $color-cyber-cyan, $color-cyber-pink);
+    opacity: 0.75;
+    filter: blur(4px);
+    z-index: -1;
+    @include transition;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    filter: blur(6px);
+  }
+}
+
+.avatarImage {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  border: 2px solid $color-black;
+  object-fit: cover;
+}
+
+.onlineIndicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: $color-success;
+  border: 2px solid $color-black;
+  border-radius: $radius-full;
+  box-shadow: 0 0 8px $color-success;
+}

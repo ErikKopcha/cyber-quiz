@@ -1,0 +1,308 @@
+@import '@/presentation/styles/module-imports';
+
+// ========================================
+// DASHBOARD PAGE STYLES
+// ========================================
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  margin-bottom: $spacing-8;
+
+  @include respond-to-md {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  letter-spacing: $letter-spacing-tight;
+  margin-bottom: $spacing-2;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $color-slate-400;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background-color: $color-success;
+  box-shadow: 0 0 8px $color-success;
+}
+
+.statusSeparator {
+  color: $color-slate-600;
+}
+
+.userId {
+  font-family: $font-mono;
+  color: $color-cyber-cyan;
+}
+
+// ========================================
+// BENTO GRID LAYOUT
+// ========================================
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-4;
+  margin-bottom: $spacing-8;
+
+  @include respond-to-md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6;
+  }
+
+  @include respond-to-lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Grid items
+.radarCard {
+  grid-column: span 1;
+
+  @include respond-to-md {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+.rankCard {
+  grid-column: span 1;
+}
+
+.accuracyCard {
+  grid-column: span 1;
+}
+
+.activityCard {
+  grid-column: span 1;
+
+  @include respond-to-md {
+    grid-column: span 2;
+  }
+}
+
+.alertCard {
+  grid-column: span 1;
+
+  @include respond-to-md {
+    grid-column: span 2;
+  }
+}
+
+// ========================================
+// CARD CONTENT STYLES
+// ========================================
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-6;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+}
+
+.cardSubtitle {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+  margin-top: $spacing-1;
+}
+
+.iconButton {
+  padding: $spacing-2;
+  border-radius: $radius-lg;
+  color: $color-slate-400;
+  @include transition;
+
+  &:hover {
+    background-color: $alpha-hover;
+    color: $color-white;
+  }
+}
+
+// Rank card specific
+.rankContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+
+.rankIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.1;
+  @include transition;
+  color: $color-cyber-cyan;
+}
+
+.rankCard:hover .rankIcon {
+  opacity: 0.2;
+}
+
+.rankLabel {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  margin-bottom: $spacing-2;
+
+  .icon {
+    color: $color-cyber-cyan;
+  }
+
+  .text {
+    font-size: $font-size-xs;
+    font-family: $font-mono;
+    color: $color-cyber-cyan;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+  }
+}
+
+.rankTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  @include neon-text-cyan;
+  margin-bottom: $spacing-1;
+}
+
+.rankPercentile {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+  margin-bottom: $spacing-4;
+}
+
+// Accuracy card
+.accuracyValue {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-1;
+
+  .number {
+    font-size: 3.5rem;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    line-height: 1;
+    letter-spacing: $letter-spacing-tight;
+  }
+
+  .percent {
+    font-size: $font-size-xl;
+    color: $color-slate-500;
+  }
+}
+
+.accuracyIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  background-color: rgba($color-success, 0.1);
+  border: 1px solid rgba($color-success, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-success;
+}
+
+.accuracyStats {
+  display: flex;
+  gap: $spacing-2;
+  margin-top: $spacing-4;
+}
+
+.stat {
+  flex: 1;
+  background-color: rgba($color-slate-800, 0.5);
+  border-radius: $radius-md;
+  padding: $spacing-2;
+  text-align: center;
+  border: 1px solid rgba($color-white, 0.05);
+
+  .statLabel {
+    font-size: 10px;
+    color: $color-slate-500;
+    text-transform: uppercase;
+    margin-bottom: $spacing-1;
+  }
+
+  .statValue {
+    font-size: $font-size-sm;
+    font-family: $font-mono;
+    font-weight: $font-weight-semibold;
+
+    &.success {
+      color: $color-success;
+    }
+
+    &.error {
+      color: $color-error;
+    }
+  }
+}
+
+// Alert card
+.alertContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-4;
+}
+
+.alertInfo {
+  flex: 1;
+}
+
+.alertTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  margin-bottom: $spacing-1;
+
+  .icon {
+    color: $color-warning;
+  }
+
+  .text {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+  }
+}
+
+.alertDescription {
+  font-size: $font-size-sm;
+  color: $color-slate-400;
+
+  .highlight {
+    color: $color-white;
+    font-weight: $font-weight-medium;
+  }
+}

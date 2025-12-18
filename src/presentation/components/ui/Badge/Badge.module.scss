@@ -1,0 +1,127 @@
+@import '@/presentation/styles/module-imports';
+
+// ========================================
+// BADGE COMPONENT STYLES
+// ========================================
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  padding: $spacing-1 $spacing-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  line-height: 1;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+// ========================================
+// VARIANTS (CATEGORY BADGES)
+// ========================================
+
+.react {
+  background-color: rgba($color-cyber-cyan, 0.1);
+  color: $color-cyber-cyan;
+  border-color: rgba($color-cyber-cyan, 0.2);
+}
+
+.typescript {
+  background-color: rgba($color-blue, 0.1);
+  color: $color-blue;
+  border-color: rgba($color-blue, 0.2);
+}
+
+.css {
+  background-color: rgba($color-purple, 0.1);
+  color: $color-purple;
+  border-color: rgba($color-purple, 0.2);
+}
+
+.javascript {
+  background-color: rgba(#f7df1e, 0.1);
+  color: #f7df1e;
+  border-color: rgba(#f7df1e, 0.2);
+}
+
+.algorithms {
+  background-color: rgba($color-success, 0.1);
+  color: $color-success;
+  border-color: rgba($color-success, 0.2);
+}
+
+.systemDesign {
+  background-color: rgba($color-warning, 0.1);
+  color: $color-warning;
+  border-color: rgba($color-warning, 0.2);
+}
+
+// ========================================
+// DIFFICULTY BADGES
+// ========================================
+
+.junior {
+  background-color: rgba($color-success, 0.1);
+  color: $color-success;
+  border-color: rgba($color-success, 0.2);
+}
+
+.middle {
+  background-color: rgba($color-warning, 0.1);
+  color: $color-warning;
+  border-color: rgba($color-warning, 0.2);
+}
+
+.senior {
+  background-color: rgba($color-cyber-pink, 0.1);
+  color: $color-cyber-pink;
+  border-color: rgba($color-cyber-pink, 0.2);
+}
+
+// ========================================
+// STATUS BADGES
+// ========================================
+
+.success {
+  background-color: rgba($color-success, 0.1);
+  color: $color-success;
+  border-color: rgba($color-success, 0.2);
+}
+
+.error {
+  background-color: rgba($color-error, 0.1);
+  color: $color-error;
+  border-color: rgba($color-error, 0.2);
+}
+
+.warning {
+  background-color: rgba($color-warning, 0.1);
+  color: $color-warning;
+  border-color: rgba($color-warning, 0.2);
+}
+
+.info {
+  background-color: rgba($color-info, 0.1);
+  color: $color-info;
+  border-color: rgba($color-info, 0.2);
+}
+
+// ========================================
+// WITH DOT INDICATOR
+// ========================================
+
+.withDot {
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    box-shadow: 0 0 8px currentColor;
+  }
+}

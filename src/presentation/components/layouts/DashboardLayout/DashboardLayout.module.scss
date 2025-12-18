@@ -1,0 +1,57 @@
+@import '@/presentation/styles/module-imports';
+
+// ========================================
+// DASHBOARD LAYOUT STYLES
+// ========================================
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $color-dark-bg;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-4;
+  @include custom-scrollbar;
+
+  @include respond-to-lg {
+    padding: $spacing-8;
+  }
+}
+
+// ========================================
+// BACKGROUND DECORATIVE GLOWS
+// ========================================
+
+.bgGlowCyan {
+  position: fixed;
+  top: 80px;
+  left: 80px;
+  width: 384px;
+  height: 384px;
+  background: radial-gradient(circle, rgba($color-cyber-cyan, 0.15), transparent);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgGlowPink {
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+  width: 384px;
+  height: 384px;
+  background: radial-gradient(circle, rgba($color-cyber-pink, 0.15), transparent);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}

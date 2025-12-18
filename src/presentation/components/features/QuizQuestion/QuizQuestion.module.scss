@@ -1,0 +1,261 @@
+@import '@/presentation/styles/module-imports';
+
+// ========================================
+// QUIZ QUESTION COMPONENT STYLES
+// ========================================
+
+.container {
+  @include glass-panel;
+  border: 1px solid rgba($color-cyber-cyan, 0.3);
+  border-radius: $radius-2xl;
+  padding: $spacing-2;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba($color-cyber-cyan, 0.05);
+}
+
+.progressBar {
+  height: 4px;
+  background-color: $color-slate-800;
+  width: 100%;
+  border-radius: $radius-xl $radius-xl 0 0;
+  overflow: hidden;
+  margin-bottom: $spacing-2;
+
+  .progress {
+    height: 100%;
+    background: linear-gradient(to right, $color-cyber-cyan, $color-blue);
+    box-shadow: $shadow-cyan-sm;
+    @include transition(width, 300ms);
+  }
+}
+
+.content {
+  padding: $spacing-6;
+
+  @include respond-to-md {
+    padding: $spacing-8;
+  }
+}
+
+.header {
+  display: flex;
+  gap: $spacing-3;
+  margin-bottom: $spacing-8;
+}
+
+.questionMeta {
+  margin-bottom: $spacing-4;
+}
+
+.question {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-8;
+
+  @include respond-to-md {
+    font-size: $font-size-2xl;
+  }
+
+  code {
+    background-color: rgba($color-black, 0.3);
+    color: $color-cyber-cyan;
+    padding: $spacing-1 $spacing-2;
+    border-radius: $radius-sm;
+    border: 1px solid rgba($color-white, 0.1);
+    font-family: $font-mono;
+    font-size: 0.9em;
+  }
+}
+
+// Code snippet
+.codeBlock {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba($color-white, 0.1);
+  background-color: #0d1117;
+  margin-bottom: $spacing-8;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-2 $spacing-4;
+  background-color: rgba($color-white, 0.05);
+  border-bottom: 1px solid rgba($color-white, 0.05);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-full;
+
+  &.red {
+    background-color: rgba($color-error, 0.5);
+  }
+
+  &.yellow {
+    background-color: rgba(#f59e0b, 0.5);
+  }
+
+  &.green {
+    background-color: rgba($color-success, 0.5);
+  }
+}
+
+.fileName {
+  margin-left: $spacing-2;
+  font-size: $font-size-xs;
+  font-family: $font-mono;
+  color: $color-slate-500;
+}
+
+.codeContent {
+  padding: $spacing-4;
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  color: $color-slate-300;
+  overflow-x: auto;
+  @include custom-scrollbar(4px);
+
+  pre {
+    margin: 0;
+    white-space: pre;
+
+    .keyword {
+      color: #c792ea;
+    }
+
+    .string {
+      color: #c3e88d;
+    }
+
+    .function {
+      color: #82aaff;
+    }
+
+    .comment {
+      color: $color-slate-500;
+    }
+  }
+}
+
+// Options
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-4;
+  padding: $spacing-4;
+  border-radius: $radius-xl;
+  border: 1px solid rgba($color-white, 0.1);
+  background-color: rgba($color-white, 0.05);
+  cursor: pointer;
+  @include transition;
+  position: relative;
+
+  &:hover {
+    background-color: rgba($color-white, 0.1);
+    border-color: rgba($color-cyber-cyan, 0.5);
+  }
+
+  &.selected {
+    border: 2px solid $color-cyber-cyan;
+    background-color: rgba($color-cyber-cyan, 0.1);
+    box-shadow: 0 0 20px rgba($color-cyber-cyan, 0.15);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+.radio {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+  border: 2px solid $color-slate-600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  @include transition;
+
+  .option:hover & {
+    border-color: $color-cyber-cyan;
+  }
+
+  .option.selected & {
+    border-color: $color-cyber-cyan;
+    background-color: rgba($color-cyber-cyan, 0.2);
+  }
+
+  &Inner {
+    width: 10px;
+    height: 10px;
+    border-radius: $radius-full;
+    background-color: $color-cyber-cyan;
+    opacity: 0;
+    box-shadow: 0 0 8px $color-cyber-cyan;
+    @include transition;
+
+    .option.selected & {
+      opacity: 1;
+    }
+  }
+}
+
+.optionText {
+  flex: 1;
+  font-size: $font-size-sm;
+  color: $color-slate-300;
+  line-height: $line-height-relaxed;
+
+  @include respond-to-md {
+    font-size: $font-size-base;
+  }
+
+  .option:hover & {
+    color: $color-white;
+  }
+
+  strong {
+    color: $color-white;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// Footer
+.footer {
+  margin-top: $spacing-8;
+  padding-top: $spacing-6;
+  border-top: 1px solid rgba($color-white, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-4;
+}
+
+.reportButton {
+  color: $color-slate-500;
+  @include transition;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  &:hover {
+    color: $color-white;
+  }
+}

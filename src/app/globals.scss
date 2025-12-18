@@ -1,0 +1,72 @@
+// ========================================
+// GLOBAL STYLES - Main entry point
+// ========================================
+
+@import '../presentation/styles/settings/all';
+@import '../presentation/styles/tools/mixins';
+@import '../presentation/styles/generic/reset';
+
+// ========================================
+// BASE STYLES
+// ========================================
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+body {
+  font-family: $font-sans;
+  background-color: $color-dark-bg;
+  color: $color-slate-300;
+  @include gradient-radial($color-cyber-cyan, $color-cyber-pink, 0.15);
+  background-attachment: fixed;
+  @include custom-scrollbar;
+}
+
+// Typography defaults
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-white;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+code,
+pre {
+  font-family: $font-mono;
+}
+
+// Focus visible for accessibility
+* {
+  @include focus-visible;
+}
+
+// ========================================
+// UTILITY CLASSES
+// ========================================
+
+.font-mono {
+  font-family: $font-mono;
+}
+
+.text-glow-cyan {
+  @include neon-text-cyan;
+}
+
+.text-glow-pink {
+  @include neon-text-pink;
+}
+
+.glass-panel {
+  @include glass-panel;
+}
+
+.neon-border-cyan {
+  @include neon-border-cyan;
+}
+
+.neon-border-pink {
+  @include neon-border-pink;
+}

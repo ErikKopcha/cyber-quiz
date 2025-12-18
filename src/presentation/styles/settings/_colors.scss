@@ -1,0 +1,46 @@
+// ========================================
+// COLORS - Design Tokens (Cyberpunk Theme)
+// ========================================
+
+// Primary Colors
+$color-cyber-cyan: #06b6d4;
+$color-cyber-pink: #d946ef;
+$color-blue: #3b82f6;
+$color-purple: #a855f7;
+
+// Neutral Colors
+$color-black: #000000;
+$color-dark-bg: #030712;
+$color-dark-panel: #111827;
+$color-slate-900: #0f172a;
+$color-slate-800: #1e293b;
+$color-slate-700: #334155;
+$color-slate-600: #475569;
+$color-slate-500: #64748b;
+$color-slate-400: #94a3b8;
+$color-slate-300: #cbd5e1;
+$color-white: #ffffff;
+
+// Semantic Colors
+$color-success: #22c55e;
+$color-warning: #f59e0b;
+$color-error: #ef4444;
+$color-info: $color-cyber-cyan;
+
+// Alpha Values
+$alpha-glass-bg: rgba($color-dark-panel, 0.6);
+$alpha-border: rgba($color-white, 0.08);
+$alpha-hover: rgba($color-white, 0.1);
+
+// Neon Shadows
+$shadow-cyan-sm: 0 0 10px rgba($color-cyber-cyan, 0.2);
+$shadow-cyan-md: 0 0 15px rgba($color-cyber-cyan, 0.3);
+$shadow-cyan-lg: 0 0 20px rgba($color-cyber-cyan, 0.4);
+
+$shadow-pink-sm: 0 0 10px rgba($color-cyber-pink, 0.2);
+$shadow-pink-md: 0 0 15px rgba($color-cyber-pink, 0.3);
+$shadow-pink-lg: 0 0 20px rgba($color-cyber-pink, 0.4);
+
+// Text Shadows (Neon Glow)
+$text-shadow-cyan: 0 0 10px rgba($color-cyber-cyan, 0.8);
+$text-shadow-pink: 0 0 10px rgba($color-cyber-pink, 0.8);

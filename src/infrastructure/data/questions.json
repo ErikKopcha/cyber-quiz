@@ -1,0 +1,1313 @@
+{
+  "categories": [
+    "react",
+    "typescript",
+    "javascript",
+    "css",
+    "html",
+    "browser",
+    "algorithms",
+    "system-design",
+    "networking",
+    "nextjs",
+    "react-native",
+    "security",
+    "performance",
+    "testing",
+    "tooling",
+    "architecture",
+    "web3",
+    "soft-skills",
+    "mobile"
+  ],
+  "questions": [
+    {
+      "id": "net-001",
+      "category": "networking",
+      "difficulty": "junior",
+      "type": "multiple-choice",
+      "question": "What is the primary difference between TCP and UDP?",
+      "options": [
+        "TCP is connection-oriented and reliable; UDP is connectionless and faster but unreliable",
+        "UDP is reliable; TCP is unreliable",
+        "TCP is only for web browsing; UDP is for email",
+        "There is no difference"
+      ],
+      "correctAnswer": 0,
+      "explanation": "TCP (Transmission Control Protocol) ensures delivery and order (3-way handshake). UDP (User Datagram Protocol) sends packets without checking if they arrive (Fire and Forget), making it faster for streaming/gaming.",
+      "tags": ["networking", "tcp", "udp"],
+      "weight": 3
+    },
+    {
+      "id": "net-002",
+      "category": "networking",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "Which HTTP method is 'Idempotent'?",
+      "options": [
+        "POST",
+        "PUT",
+        "PATCH (usually)",
+        "Connect"
+      ],
+      "correctAnswer": 1,
+      "explanation": "PUT is idempotent, meaning making the same request multiple times has the same effect as making it once (replaces resource). POST is NOT idempotent (creates multiple resources).",
+      "tags": ["http", "api", "rest"],
+      "weight": 5
+    },
+    {
+      "id": "http-001",
+      "category": "networking",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What happens when you type a URL in the browser? Which step comes FIRST after DNS resolution?",
+      "options": [
+        "HTTP request is sent",
+        "TCP handshake is established",
+        "TLS handshake is established",
+        "HTML parsing begins"
+      ],
+      "correctAnswer": 1,
+      "explanation": "After DNS resolution, the browser establishes a TCP connection (3-way handshake: SYN, SYN-ACK, ACK). Only then, if HTTPS, comes TLS handshake, followed by HTTP request.",
+      "tags": ["http", "networking", "tcp"],
+      "weight": 8
+    },
+    {
+      "id": "http-002",
+      "category": "networking",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is the difference between HTTP/1.1 and HTTP/2?",
+      "options": [
+        "HTTP/2 uses text protocol, HTTP/1.1 uses binary",
+        "HTTP/2 supports multiplexing (multiple requests over single connection), HTTP/1.1 doesn't",
+        "HTTP/1.1 is faster than HTTP/2",
+        "HTTP/2 doesn't support HTTPS"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HTTP/2 uses binary protocol and multiplexing, allowing multiple requests/responses simultaneously over one TCP connection. HTTP/1.1 requires multiple connections or head-of-line blocking.",
+      "tags": ["http", "protocols", "performance"],
+      "weight": 7
+    },
+    {
+      "id": "dns-001",
+      "category": "networking",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "Which DNS record type is used to map a hostname to an IPv4 address?",
+      "options": [
+        "AAAA Record",
+        "CNAME Record",
+        "A Record",
+        "MX Record"
+      ],
+      "correctAnswer": 2,
+      "explanation": "A Record maps a hostname to an IPv4 address. AAAA maps to IPv6. CNAME maps an alias to another canonical name. MX is for mail exchange.",
+      "tags": ["dns", "networking"],
+      "weight": 5
+    },
+    {
+      "id": "browser-001",
+      "category": "browser",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the Critical Rendering Path?",
+      "code": "<link rel=\"stylesheet\" href=\"style.css\">\n<script src=\"app.js\"></script>",
+      "options": [
+        "DOM → CSSOM → Render Tree → Layout → Paint → Composite",
+        "HTML → JavaScript → CSS → Render",
+        "Parse → Compile → Execute",
+        "Request → Response → Render"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CRP: 1) HTML → DOM, 2) CSS → CSSOM, 3) DOM + CSSOM → Render Tree, 4) Layout (calculate positions), 5) Paint (pixels), 6) Composite (layers). CSS blocks rendering, JS blocks parsing.",
+      "tags": ["browser", "rendering", "performance"],
+      "weight": 9
+    },
+    {
+      "id": "browser-002",
+      "category": "browser",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between 'async' and 'defer' script attributes?",
+      "code": "<script async src=\"analytics.js\"></script>\n<script defer src=\"app.js\"></script>",
+      "options": [
+        "No difference, both load scripts asynchronously",
+        "async executes immediately when downloaded (may block parser), defer waits until HTML parsing completes",
+        "defer executes immediately, async waits",
+        "async only works with external scripts"
+      ],
+      "correctAnswer": 1,
+      "explanation": "async: downloads in parallel, executes ASAP (can interrupt parsing). defer: downloads in parallel, executes AFTER parsing, in order. Use defer for scripts that need DOM or depend on each other.",
+      "tags": ["html", "performance", "scripts"],
+      "weight": 8
+    },
+    {
+      "id": "browser-003",
+      "category": "browser",
+      "difficulty": "junior",
+      "type": "multiple-choice",
+      "question": "What is Event Bubbling?",
+      "options": [
+        "Events propagate from the target element up to the window",
+        "Events propagate from the window down to the target element",
+        "Events are handled only on the target element",
+        "Events loop continuously"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Bubbling: Event fires on target, then parent, then grandparent... up to window. Capturing (Trickling) is the opposite: window down to target.",
+      "tags": ["browser", "dom", "events"],
+      "weight": 4
+    },
+    {
+      "id": "html-001",
+      "category": "html",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "Why is Semantic HTML important?",
+      "options": [
+        "It makes the code look prettier",
+        "It improves SEO and Accessibility (Screen Readers)",
+        "It is required for JavaScript to work",
+        "It reduces file size"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Semantic HTML (header, nav, main, article) provides meaning to content. This helps search engines (SEO) understand page structure and screen readers (Accessibility) navigate effectively.",
+      "tags": ["html", "seo", "accessibility"],
+      "weight": 6
+    },
+    {
+      "id": "html-002",
+      "category": "html",
+      "difficulty": "junior",
+      "type": "multiple-choice",
+      "question": "Which meta tag ensures proper rendering on mobile devices?",
+      "code": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "options": [
+        "charset",
+        "viewport",
+        "keywords",
+        "description"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The viewport meta tag controls layout on mobile browsers. Without it, mobile browsers render pages at desktop width and scale them down (making text unreadable).",
+      "tags": ["html", "responsive", "mobile"],
+      "weight": 3
+    },
+    {
+      "id": "css-001",
+      "category": "css",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "How does 'z-index' work?",
+      "options": [
+        "It works on any element to set vertical order",
+        "It only works on positioned elements (relative, absolute, fixed, sticky) or flex/grid children",
+        "Higher z-index always stays on top, regardless of nesting",
+        "It changes the opacity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "z-index controls stack order but ONLY works on elements with position != static (or flex/grid items). Note: It is scoped to the Stacking Context (parent z-index affects children).",
+      "tags": ["css", "layout"],
+      "weight": 5
+    },
+    {
+      "id": "css-003",
+      "category": "css",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the difference between 'em' and 'rem' units?",
+      "code": "body { font-size: 16px; }\n.parent { font-size: 2em; } /* 32px */\n.child { font-size: 2em; } /* ? */",
+      "options": [
+        "em is relative to parent, rem is relative to root element",
+        "rem is deprecated, use em instead",
+        "They are identical",
+        "em only works with font-size"
+      ],
+      "correctAnswer": 0,
+      "explanation": "em = relative to parent font-size (compounds in nested elements). rem = relative to root <html> font-size (no compounding). In example, .child = 64px with em, 32px with rem.",
+      "tags": ["css", "units", "typography"],
+      "weight": 6
+    },
+    {
+      "id": "css-004",
+      "category": "css",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is the CSS Box Model?",
+      "options": [
+        "Content → Padding → Border → Margin (from inside out)",
+        "Margin → Border → Padding → Content",
+        "Border → Padding → Content → Margin",
+        "Content only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Box model: Content (width/height) → Padding → Border → Margin. box-sizing: border-box includes padding and border in width/height. Default is content-box.",
+      "tags": ["css", "box-model", "layout"],
+      "weight": 5
+    },
+    {
+      "id": "css-005",
+      "category": "css",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "When should you use CSS Grid vs Flexbox?",
+      "options": [
+        "Always use Grid, Flexbox is deprecated",
+        "Grid for 2D layouts (rows AND columns), Flexbox for 1D layouts (row OR column)",
+        "Flexbox for complex layouts, Grid for simple ones",
+        "No difference, they're interchangeable"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Grid = 2D system (define rows AND columns simultaneously, items can span). Flexbox = 1D system (row OR column, content-first). Use Grid for page layouts, Flexbox for components/navigation.",
+      "tags": ["css", "layout", "grid", "flexbox"],
+      "weight": 8
+    },
+    {
+      "id": "css-006",
+      "category": "css",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is CSS specificity and how is it calculated?",
+      "code": "#header .nav li { color: red; }     /* ? */\n.header-nav li { color: blue; }     /* ? */\nli { color: green; }                /* ? */",
+      "options": [
+        "Inline: 1000, IDs: 100, Classes: 10, Elements: 1",
+        "Last rule always wins",
+        "IDs: 1, Classes: 1, Elements: 1 (count each)",
+        "Random selection by browser"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Specificity = (inline, IDs, classes/attrs/pseudo-classes, elements/pseudo-elements). Example: #header .nav li = (0,1,1,2) = 112 > .header-nav li = (0,0,1,2) = 012. First rule wins.",
+      "tags": ["css", "specificity", "cascade"],
+      "weight": 7
+    },
+    {
+      "id": "js-001",
+      "category": "javascript",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is a Closure in JavaScript?",
+      "code": "function makeCounter() {\n  let count = 0;\n  return function() { return count++; };\n}",
+      "options": [
+        "A function bundled together with references to its surrounding state (lexical environment)",
+        "A function that closes the browser window",
+        "A deprecated loop structure",
+        "A way to lock variables"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A closure gives you access to an outer function's scope from an inner function. In the example, the inner function retains access to 'count' even after 'makeCounter' has finished executing.",
+      "tags": ["javascript", "closure", "scope"],
+      "weight": 6
+    },
+    {
+      "id": "js-002",
+      "category": "javascript",
+      "difficulty": "junior",
+      "type": "multiple-choice",
+      "question": "What is the difference between '==' and '==='?",
+      "code": "5 == '5' // true\n5 === '5' // false",
+      "options": [
+        "== checks value (allows coercion), === checks value and type (strict)",
+        "== is stricter than ===",
+        "They are the same",
+        "=== is for strings only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "== (Loose equality) performs type coercion before comparison. === (Strict equality) compares both value and type without coercion. Always prefer === to avoid bugs.",
+      "tags": ["javascript", "syntax", "types"],
+      "weight": 3
+    },
+    {
+      "id": "js-003",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the difference between 'var', 'let', and 'const'?",
+      "code": "function test() {\n  var x = 1;\n  let y = 2;\n  const z = 3;\n  if (true) {\n    var x = 10;\n    let y = 20;\n    const z = 30;\n  }\n  console.log(x, y, z);\n}",
+      "options": ["10, 2, 3", "1, 2, 3", "10, 20, 30", "Error: redeclaration"],
+      "correctAnswer": 0,
+      "explanation": "var: function-scoped, hoisted, can redeclare. let/const: block-scoped, TDZ, no redeclaration. In example, var x is redeclared in function scope (10), let y & const z are different block variables (2, 3).",
+      "tags": ["javascript", "scope", "variables"],
+      "weight": 7
+    },
+    {
+      "id": "js-004",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is Hoisting in JavaScript?",
+      "code": "console.log(x);\nvar x = 5;\n\nconsole.log(y);\nlet y = 10;",
+      "options": ["undefined, undefined", "undefined, ReferenceError", "5, 10", "ReferenceError, ReferenceError"],
+      "correctAnswer": 1,
+      "explanation": "Hoisting: declarations move to top. var hoisted with undefined value. let/const hoisted to Temporal Dead Zone (TDZ) - accessing before declaration throws ReferenceError.",
+      "tags": ["javascript", "hoisting", "variables"],
+      "weight": 8
+    },
+    {
+      "id": "js-005",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are the 4 rules of 'this' binding in JavaScript?",
+      "code": "const obj = {\n  value: 42,\n  getValue: function() { return this.value; }\n};\n\nconst getValue = obj.getValue;\ngetValue(); // ?",
+      "options": ["42", "undefined", "TypeError", "null"],
+      "correctAnswer": 1,
+      "explanation": "4 rules: 1) new binding, 2) explicit (call/apply/bind), 3) implicit (obj.method), 4) default (global/undefined in strict). In example, getValue loses implicit binding → default → undefined (strict mode).",
+      "tags": ["javascript", "this", "context"],
+      "weight": 9
+    },
+    {
+      "id": "js-006",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "Explain the Event Loop: what's the order of execution?",
+      "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nqueueMicrotask(() => console.log('4'));\nconsole.log('5');",
+      "options": ["1, 5, 3, 4, 2", "1, 2, 3, 4, 5", "1, 5, 2, 3, 4", "1, 3, 4, 5, 2"],
+      "correctAnswer": 0,
+      "explanation": "Event Loop: Call Stack (sync: 1, 5) → Microtask Queue (Promises, queueMicrotask: 3, 4) → Macrotask Queue (setTimeout, setInterval: 2). Microtasks run after each task before next macrotask.",
+      "tags": ["javascript", "event-loop", "async"],
+      "weight": 10
+    },
+    {
+      "id": "js-007",
+      "category": "javascript",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What's the output of this Promise chain?",
+      "code": "Promise.resolve(1)\n  .then(x => x + 1)\n  .then(x => { throw new Error('oops'); })\n  .catch(e => 'error')\n  .then(x => x + '!')\n  .then(console.log);",
+      "options": ["error!", "Uncaught Error: oops", "undefined!", "2!"],
+      "correctAnswer": 0,
+      "explanation": "Chain: 1 → 2 → throw → catch returns 'error' → 'error' + '!' = 'error!' → logs. catch() returns a resolved promise with its return value, chain continues.",
+      "tags": ["javascript", "promises", "error-handling"],
+      "weight": 6
+    },
+    {
+      "id": "js-008",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between Promise.all() and Promise.allSettled()?",
+      "code": "const p1 = Promise.resolve(1);\nconst p2 = Promise.reject('error');\nconst p3 = Promise.resolve(3);",
+      "options": [
+        "Promise.all() fails fast on first rejection, Promise.allSettled() waits for all to settle",
+        "No difference",
+        "Promise.allSettled() is deprecated",
+        "Promise.all() is faster"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Promise.all(): rejects immediately when first promise rejects. Promise.allSettled(): waits for ALL promises (returns array with status/value or reason). Use allSettled when you need all results regardless of failures.",
+      "tags": ["javascript", "promises", "async"],
+      "weight": 8
+    },
+    {
+      "id": "js-009",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are Symbols in JavaScript and why use them?",
+      "code": "const sym1 = Symbol('desc');\nconst sym2 = Symbol('desc');\nconsole.log(sym1 === sym2);",
+      "options": ["true", "false", "TypeError", "undefined"],
+      "correctAnswer": 1,
+      "explanation": "Symbols are unique, immutable primitives. Every Symbol() call creates unique value, even with same description. Use cases: unique object keys, well-known symbols (Symbol.iterator), avoiding name collisions.",
+      "tags": ["javascript", "symbols", "primitives"],
+      "weight": 7
+    },
+    {
+      "id": "js-010",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between Map and Object?",
+      "options": [
+        "Map keys can be any type, Object keys are strings/symbols only",
+        "Object is faster than Map",
+        "Map is deprecated",
+        "No difference"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Map: any key type, maintains insertion order, has size property, better for frequent add/delete. Object: string/symbol keys only, prototypal inheritance, better for JSON serialization. Use Map for collections.",
+      "tags": ["javascript", "data-structures", "map"],
+      "weight": 7
+    },
+    {
+      "id": "react-001",
+      "category": "react",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "Why should you NOT use array index as keys in React lists?",
+      "code": "{items.map((item, index) => <li key={index}>{item.name}</li>)}",
+      "options": [
+        "It can cause performance issues and state bugs when list items are reordered/inserted/deleted",
+        "It throws an error",
+        "It's illegal syntax",
+        "React doesn't allow numbers as keys"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Keys identify items. If index is used and list order changes, React reuses DOM elements for wrong data, causing bugs (especially with inputs/state) and unnecessary re-renders. Use unique IDs.",
+      "tags": ["react", "keys", "reconciliation"],
+      "weight": 6
+    },
+    {
+      "id": "react-002",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are React Portals used for?",
+      "options": [
+        "Rendering a child into a DOM node outside the parent component's hierarchy",
+        "Teleporting users",
+        "Routing between pages",
+        "Fetching data"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Portals (`createPortal`) let you render children into a different part of the DOM (e.g., document.body). Essential for Modals, Tooltips, and Dropdowns to avoid z-index/overflow issues.",
+      "tags": ["react", "portals", "dom"],
+      "weight": 7
+    },
+    {
+      "id": "react-004",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the React Fiber reconciliation algorithm?",
+      "options": [
+        "A bundler for React applications",
+        "An incremental rendering architecture that can pause/resume work and assign priority",
+        "A state management library",
+        "A testing framework"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Fiber is React's reconciliation engine (React 16+). It breaks rendering into chunks, pauses work to handle high-priority updates (user input), and enables concurrent features: Suspense, useTransition, useDeferredValue.",
+      "tags": ["react", "fiber", "architecture"],
+      "weight": 10
+    },
+    {
+      "id": "react-005",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between useEffect and useLayoutEffect?",
+      "code": "useEffect(() => { /* A */ });\nuseLayoutEffect(() => { /* B */ });",
+      "options": [
+        "useEffect fires after paint, useLayoutEffect fires before paint (synchronously after DOM mutations)",
+        "No difference",
+        "useLayoutEffect is deprecated",
+        "useEffect is synchronous, useLayoutEffect is async"
+      ],
+      "correctAnswer": 0,
+      "explanation": "useEffect: async, after browser paint (non-blocking). useLayoutEffect: sync, after DOM mutations but BEFORE paint. Use useLayoutEffect for DOM measurements to prevent flicker. Most cases use useEffect.",
+      "tags": ["react", "hooks", "lifecycle"],
+      "weight": 9
+    },
+    {
+      "id": "react-006",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is React's automatic batching in React 18?",
+      "code": "function handleClick() {\n  setCount(c => c + 1);\n  setFlag(f => !f);\n  // How many re-renders?\n}",
+      "options": ["2 re-renders", "1 re-render (batched)", "0 re-renders", "3 re-renders"],
+      "correctAnswer": 1,
+      "explanation": "React 18 automatic batching: groups multiple state updates in event handlers, timeouts, promises, native events into single re-render. Before React 18, only batched in event handlers. Improves performance.",
+      "tags": ["react", "batching", "performance"],
+      "weight": 8
+    },
+    {
+      "id": "react-007",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the purpose of React.memo()?",
+      "code": "const Child = React.memo(({ value }) => {\n  return <div>{value}</div>;\n});",
+      "options": [
+        "Caches component instances",
+        "Prevents re-render if props haven't changed (shallow comparison)",
+        "Memoizes all state",
+        "Replaces useMemo"
+      ],
+      "correctAnswer": 1,
+      "explanation": "React.memo is HOC that memoizes component. Re-renders only if props change (shallow comparison). Use for expensive renders with stable props. Can provide custom comparison function as second argument.",
+      "tags": ["react", "optimization", "memoization"],
+      "weight": 7
+    },
+    {
+      "id": "react-008",
+      "category": "react",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What's the difference between controlled and uncontrolled components?",
+      "options": [
+        "Controlled: React state controls input value. Uncontrolled: DOM controls value (use refs)",
+        "Uncontrolled components are deprecated",
+        "No difference",
+        "Controlled components are slower"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Controlled: value={state}, onChange updates state, React is source of truth. Uncontrolled: no value prop, use ref to get value, DOM is source of truth. Controlled is preferred (validation, conditional rendering).",
+      "tags": ["react", "forms", "controlled"],
+      "weight": 6
+    },
+    {
+      "id": "react-009",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is useTransition in React 18?",
+      "code": "const [isPending, startTransition] = useTransition();\nstartTransition(() => { setSearchQuery(input); });",
+      "options": [
+        "CSS transitions helper",
+        "Marks state updates as non-urgent, allowing React to prioritize other updates",
+        "Replaces setTimeout",
+        "Animation library"
+      ],
+      "correctAnswer": 1,
+      "explanation": "useTransition marks updates as low-priority transitions. React can interrupt them for urgent updates (typing). Use for expensive updates (filtering large lists). isPending indicates transition in progress.",
+      "tags": ["react", "concurrency", "performance"],
+      "weight": 9
+    },
+    {
+      "id": "react-010",
+      "category": "react",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the difference between useMemo and useCallback?",
+      "code": "useMemo(() => compute(a), [a]);\nuseCallback(() => doSomething(a), [a]);",
+      "options": [
+        "useMemo memoizes VALUE, useCallback memoizes FUNCTION",
+        "No difference",
+        "useCallback is deprecated",
+        "useMemo is for functions only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "useMemo: memoizes computed VALUE (runs function, caches result). useCallback: memoizes FUNCTION itself (returns same function reference). useCallback(fn, deps) = useMemo(() => fn, deps).",
+      "tags": ["react", "hooks", "optimization"],
+      "weight": 8
+    },
+    {
+      "id": "ts-003",
+      "category": "typescript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between 'type' and 'interface' in TypeScript?",
+      "code": "type User = { name: string; };\ninterface IUser { name: string; }",
+      "options": [
+        "interface supports declaration merging, type doesn't. type supports unions/intersections better",
+        "No difference",
+        "type is deprecated",
+        "interface is only for objects"
+      ],
+      "correctAnswer": 0,
+      "explanation": "interface: declaration merging, extends keyword, better for OOP. type: unions, intersections, mapped types, primitives. Choose interface for public APIs (extendable), type for complex types/unions.",
+      "tags": ["typescript", "types", "interfaces"],
+      "weight": 7
+    },
+    {
+      "id": "ts-004",
+      "category": "typescript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is a discriminated union (tagged union)?",
+      "code": "type Result = { status: 'ok'; data: string; } | { status: 'error'; err: string; };",
+      "options": [
+        "A union type with a common discriminant property for type narrowing",
+        "A deprecated TypeScript feature",
+        "Same as regular union",
+        "Only works with strings"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Discriminated union: union type with common literal property (discriminant). TypeScript narrows type based on discriminant check. Perfect for state machines, API responses, Redux actions.",
+      "tags": ["typescript", "unions", "type-narrowing"],
+      "weight": 8
+    },
+    {
+      "id": "ts-005",
+      "category": "typescript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What does the 'never' type represent?",
+      "code": "function throwError(): never { throw new Error('fail'); }",
+      "options": [
+        "Functions that never return (throw or infinite loop)",
+        "Same as void",
+        "Same as undefined",
+        "Deprecated type"
+      ],
+      "correctAnswer": 0,
+      "explanation": "never: represents values that never occur. Functions that throw or never return. Bottom type (assignable to everything, nothing assignable to it). Use for exhaustive checks in discriminated unions.",
+      "tags": ["typescript", "never", "types"],
+      "weight": 7
+    },
+    {
+      "id": "ts-006",
+      "category": "typescript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are utility types? Name 3 common ones.",
+      "code": "type P = Partial<User>;",
+      "options": [
+        "Partial (all optional), Readonly (all readonly), Pick (select properties)",
+        "Partial, Complete, Full",
+        "Start, Middle, End",
+        "Utility types are deprecated"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Utility types: built-in mapped types. Partial<T> (all optional), Readonly<T> (all readonly), Pick<T, K> (select props), Omit<T, K> (exclude props), Required<T>, Record<K, T>, ReturnType<T>.",
+      "tags": ["typescript", "utility-types", "mapped-types"],
+      "weight": 7
+    },
+    {
+      "id": "ts-007",
+      "category": "typescript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "How do you type a React component with props?",
+      "code": "const User: React.FC<Props> = ({ name, age }) => { ... }",
+      "options": [
+        "React.FC<Props> (includes children implicitly)",
+        "React.Component<Props>",
+        "Props => JSX.Element",
+        "All of the above work"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Multiple ways: React.FC<Props> (implicit children, deprecated by some), (props: Props) => JSX.Element (explicit), function User(props: Props): JSX.Element. Explicit props typing is preferred now.",
+      "tags": ["typescript", "react", "components"],
+      "weight": 6
+    },
+    {
+      "id": "algo-001",
+      "category": "algorithms",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is the Big O complexity of QuickSort in the average case?",
+      "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(n)",
+        "O(log n)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "QuickSort is O(n log n) on average. In the worst case (already sorted array with bad pivot), it can degrade to O(n^2).",
+      "tags": ["algorithms", "sorting", "complexity"],
+      "weight": 6
+    },
+    {
+      "id": "algo-003",
+      "category": "algorithms",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is the time complexity of accessing an element in a hash table (Object/Map)?",
+      "options": [
+        "O(1) average case, O(n) worst case (collisions)",
+        "O(n) always",
+        "O(log n)",
+        "O(1) always guaranteed"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hash tables: O(1) average for get/set/delete. Worst case O(n) if all keys collide (rare with good hash function). JavaScript Objects/Maps use optimized hash tables with O(1) typical performance.",
+      "tags": ["algorithms", "complexity", "hash-table"],
+      "weight": 6
+    },
+    {
+      "id": "algo-004",
+      "category": "algorithms",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "Implement debounce: what's the key concept?",
+      "options": [
+        "Reset timer on each call, execute only after silence period",
+        "Execute immediately",
+        "Execute every N milliseconds",
+        "Execute on first call only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Debounce: delays execution until after calls stop for specified time. Clears previous timer on each call. Use for search inputs (wait until user stops typing). Throttle executes at most once per interval.",
+      "tags": ["algorithms", "debounce", "performance"],
+      "weight": 8
+    },
+    {
+      "id": "algo-005",
+      "category": "algorithms",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between DFS and BFS?",
+      "options": [
+        "DFS uses stack (recursion), explores deep first. BFS uses queue, explores level by level",
+        "No difference",
+        "DFS is always faster",
+        "BFS only works on trees"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DFS (Depth-First Search): stack/recursion, goes deep before wide. Use for path finding, topological sort. BFS (Breadth-First Search): queue, explores neighbors first. Use for shortest path, level-order traversal.",
+      "tags": ["algorithms", "graph", "traversal"],
+      "weight": 7
+    },
+    {
+      "id": "algo-006",
+      "category": "algorithms",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is Big O notation?",
+      "options": [
+        "Measures algorithm efficiency (time/space complexity) as input size grows",
+        "Measures code quality",
+        "Measures bundle size",
+        "Measures developer productivity"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Big O: describes worst-case time/space complexity. O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n) linearithmic, O(n²) quadratic, O(2ⁿ) exponential. Drop constants and lower-order terms.",
+      "tags": ["algorithms", "big-o", "complexity"],
+      "weight": 6
+    },
+    {
+      "id": "sd-001",
+      "category": "system-design",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is a CDN (Content Delivery Network) and why use it?",
+      "options": [
+        "A network of distributed servers that deliver content based on user location",
+        "A database backup system",
+        "A code deployment tool",
+        "A testing network"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CDN caches static content (images, JS, CSS) on edge servers close to the user. Reduces latency (TTFB), lowers server load, and improves reliability (availability). Examples: Cloudflare, AWS CloudFront.",
+      "tags": ["system-design", "cdn", "performance"],
+      "weight": 7
+    },
+    {
+      "id": "sd-003",
+      "category": "system-design",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "How would you implement optimistic UI updates?",
+      "options": [
+        "Update UI → Send request → Rollback on error",
+        "Wait for API → Then update UI",
+        "Update UI only, ignore API",
+        "Disable button until API responds"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Optimistic UI: assume success, update immediately for better UX. Send async request, rollback on error + show message. Store pending state. Use libraries: React Query (optimisticUpdate), Apollo (optimisticResponse).",
+      "tags": ["system-design", "ux", "api"],
+      "weight": 9
+    },
+    {
+      "id": "sd-004",
+      "category": "system-design",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "Design a real-time collaborative editor (Google Docs). Key challenges?",
+      "options": [
+        "Conflict resolution (Operational Transform/CRDT), WebSocket connections, cursor positions, permissions",
+        "Just use WebSockets",
+        "Polling every second",
+        "No challenges, trivial implementation"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Key challenges: 1) Conflict resolution (OT/CRDT algorithms), 2) Real-time sync (WebSockets), 3) Cursor/selection tracking, 4) Presence indicators, 5) Offline support, 6) Permissions, 7) Version history, 8) Performance (large docs).",
+      "tags": ["system-design", "real-time", "collaboration"],
+      "weight": 10
+    },
+    {
+      "id": "sd-005",
+      "category": "system-design",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "How do you handle authentication in a React SPA?",
+      "options": [
+        "JWT in localStorage + httpOnly cookie for refresh token, axios interceptor for 401",
+        "Store password in localStorage",
+        "No authentication needed",
+        "Use query params for tokens"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Best practice: Access token (JWT) in memory/localStorage (XSS risk), refresh token in httpOnly secure cookie (CSRF protection). Intercept 401, refresh token, retry. Consider: Auth0, Clerk, or NextAuth for complexity.",
+      "tags": ["system-design", "authentication", "security"],
+      "weight": 9
+    },
+    {
+      "id": "sd-006",
+      "category": "system-design",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What caching strategy should you use for an e-commerce product catalog?",
+      "options": [
+        "CDN edge caching + Redis + browser cache with stale-while-revalidate",
+        "No caching, always fetch fresh",
+        "Cache forever in localStorage",
+        "Only server-side caching"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Multi-layer: 1) CDN edge cache (static assets), 2) Redis (API responses, 5-15min TTL), 3) Browser cache (SWR pattern), 4) Cache invalidation on updates. Consider: React Query, SWR for client-side.",
+      "tags": ["system-design", "caching", "performance"],
+      "weight": 9
+    },
+    {
+      "id": "sd-007",
+      "category": "system-design",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "Design an infinite scroll with 100k+ items. How do you optimize performance?",
+      "options": [
+        "Virtualization (react-window) + pagination + intersection observer",
+        "Render all 100k items",
+        "Load 100 at a time without virtualization",
+        "Use CSS overflow"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Solution: 1) Virtualization (render only visible + buffer ~20-50 items), 2) Pagination (fetch 50-100 per request), 3) Intersection Observer (detect scroll), 4) Skeleton loading, 5) Memoization. Libraries: react-window, react-virtualized.",
+      "tags": ["system-design", "performance", "virtualization"],
+      "weight": 10
+    },
+    {
+      "id": "security-001",
+      "category": "security",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is XSS (Cross-Site Scripting) and how to prevent it?",
+      "code": "<div dangerouslySetInnerHTML={{__html: userInput}} />",
+      "options": [
+        "Escape user input, use textContent instead of innerHTML, Content Security Policy",
+        "No need to prevent, browsers handle it",
+        "Only server-side concern",
+        "Use HTTPS"
+      ],
+      "correctAnswer": 0,
+      "explanation": "XSS: injecting malicious scripts. Prevention: 1) Escape user input, 2) Use textContent/innerText not innerHTML, 3) CSP headers, 4) React escapes by default (avoid dangerouslySetInnerHTML), 5) Sanitize with DOMPurify if HTML needed.",
+      "tags": ["security", "xss", "web"],
+      "weight": 9
+    },
+    {
+      "id": "security-002",
+      "category": "security",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is CORS and why does it exist?",
+      "options": [
+        "Browser security preventing cross-origin requests (protects users from malicious sites)",
+        "Server optimization",
+        "CDN feature",
+        "Deprecated security model"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CORS (Cross-Origin Resource Sharing): browser security. Prevents evil.com from reading data from bank.com using your cookies. Server sets Access-Control-Allow-Origin header. Preflight OPTIONS request for non-simple requests.",
+      "tags": ["security", "cors", "http"],
+      "weight": 8
+    },
+    {
+      "id": "security-003",
+      "category": "security",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is CSRF (Cross-Site Request Forgery) and how to prevent it?",
+      "options": [
+        "CSRF token in forms, SameSite cookie attribute, check Origin/Referer headers",
+        "Use HTTPS only",
+        "No prevention needed",
+        "Change password frequently"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CSRF: attacker tricks user's browser to send authenticated request. Prevention: 1) CSRF tokens (unique per session/request), 2) SameSite=Strict/Lax cookies, 3) Check Origin/Referer, 4) Re-auth for sensitive actions.",
+      "tags": ["security", "csrf", "web"],
+      "weight": 8
+    },
+    {
+      "id": "perf-001",
+      "category": "performance",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are Core Web Vitals?",
+      "options": [
+        "LCP (Largest Contentful Paint), FID/INP (responsiveness), CLS (Cumulative Layout Shift)",
+        "Bundle size, code coverage, test count",
+        "Lighthouse score only",
+        "Server response time only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Core Web Vitals (Google ranking factors): 1) LCP (loading, <2.5s), 2) FID→INP (interactivity, <100ms), 3) CLS (visual stability, <0.1). Measure with Lighthouse, PageSpeed Insights, Chrome UX Report.",
+      "tags": ["performance", "web-vitals", "metrics"],
+      "weight": 9
+    },
+    {
+      "id": "perf-002",
+      "category": "performance",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What causes layout thrashing (forced reflow)?",
+      "code": "const height = el.offsetHeight; // Read\nel.style.height = height + 10 + 'px'; // Write",
+      "options": [
+        "Interleaving DOM reads and writes forces browser to recalculate layout repeatedly",
+        "Too many elements",
+        "Slow JavaScript",
+        "Network latency"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Layout thrashing: reading layout properties (offsetHeight, getBoundingClientRect) after writing styles forces synchronous reflow. Solution: batch reads, then batch writes. Use requestAnimationFrame for animations.",
+      "tags": ["performance", "dom", "reflow"],
+      "weight": 8
+    },
+    {
+      "id": "perf-003",
+      "category": "performance",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is tree shaking?",
+      "options": [
+        "Eliminates unused code from bundle (requires ES modules)",
+        "Shakes DOM tree for testing",
+        "Animation technique",
+        "Deprecated build feature"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Tree shaking: dead code elimination. Bundler analyzes ES module imports, removes unused exports. Requires: 1) ES modules (import/export), 2) sideEffects: false in package.json, 3) Modern bundler (Webpack, Rollup, Vite).",
+      "tags": ["performance", "bundler", "optimization"],
+      "weight": 7
+    },
+    {
+      "id": "tooling-001",
+      "category": "tooling",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What's the difference between npm, yarn, and pnpm?",
+      "options": [
+        "pnpm uses hard links (saves disk space), yarn has workspaces, npm is standard",
+        "They're identical",
+        "yarn is deprecated",
+        "pnpm is slowest"
+      ],
+      "correctAnswer": 0,
+      "explanation": "npm: standard, slow(er). yarn: faster, workspaces, plug'n'play. pnpm: fastest, hard links (one copy per dep on disk), strict node_modules. Choose pnpm for monorepos/disk space, yarn for features, npm for compatibility.",
+      "tags": ["tooling", "package-managers", "npm"],
+      "weight": 5
+    },
+    {
+      "id": "tooling-002",
+      "category": "tooling",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between Webpack and Vite?",
+      "options": [
+        "Webpack bundles everything, Vite uses native ESM in dev (faster)",
+        "Vite is deprecated",
+        "No difference",
+        "Webpack is faster"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Webpack: bundles everything (slow dev start, HMR). Vite: native ESM in dev (instant start), esbuild for deps, Rollup for prod. Vite is faster for dev, both good for prod. Webpack better for complex configs/legacy.",
+      "tags": ["tooling", "bundler", "vite"],
+      "weight": 7
+    },
+    {
+      "id": "testing-001",
+      "category": "testing",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What's the testing pyramid?",
+      "options": [
+        "Many unit tests (base) → fewer integration tests → few E2E tests (top)",
+        "Only E2E tests",
+        "Only unit tests",
+        "Equal number of all test types"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Testing pyramid: 70% unit (fast, isolated, cheap), 20% integration (components working together), 10% E2E (expensive, slow, brittle). Write more unit tests, fewer E2E. Balance speed vs confidence.",
+      "tags": ["testing", "strategy", "pyramid"],
+      "weight": 6
+    },
+    {
+      "id": "testing-002",
+      "category": "testing",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What's the philosophy of React Testing Library?",
+      "options": [
+        "Test behavior from user perspective, not implementation details",
+        "Test implementation details",
+        "Only snapshot tests",
+        "No testing needed"
+      ],
+      "correctAnswer": 0,
+      "explanation": "RTL philosophy: test what users see/do, not implementation. Query by accessible labels/text (getByRole, getByLabelText), not test IDs. Avoid testing state directly. Better tests = more confidence, less refactoring pain.",
+      "tags": ["testing", "react", "rtl"],
+      "weight": 7
+    },
+    {
+      "id": "git-001",
+      "category": "tooling",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What's the difference between 'git merge' and 'git rebase'?",
+      "options": [
+        "merge creates merge commit, rebase rewrites history (linear)",
+        "No difference",
+        "rebase is deprecated",
+        "merge is always better"
+      ],
+      "correctAnswer": 0,
+      "explanation": "merge: combines branches, preserves history, creates merge commit. rebase: replays commits on top of base, linear history, cleaner but rewrites history. Rule: never rebase public branches, use for feature branches.",
+      "tags": ["git", "version-control", "workflow"],
+      "weight": 6
+    },
+    {
+      "id": "oop-001",
+      "category": "architecture",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are the 4 pillars of OOP?",
+      "options": [
+        "Encapsulation, Inheritance, Polymorphism, Abstraction",
+        "Classes, Objects, Methods, Properties",
+        "Functions, Variables, Loops, Conditions",
+        "HTML, CSS, JavaScript, React"
+      ],
+      "correctAnswer": 0,
+      "explanation": "OOP pillars: 1) Encapsulation (data hiding, private fields), 2) Inheritance (class hierarchies), 3) Polymorphism (same interface, different implementations), 4) Abstraction (hide complexity, expose interface).",
+      "tags": ["oop", "principles", "javascript"],
+      "weight": 7
+    },
+    {
+      "id": "solid-001",
+      "category": "architecture",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the Single Responsibility Principle (SRP)?",
+      "options": [
+        "A class/module should have one reason to change (one responsibility)",
+        "Write only one function per file",
+        "Use only one state variable",
+        "Have only one component"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SRP: each module/class should have ONE reason to change (one responsibility). Example: UserProfile component shouldn't fetch data AND render AND handle auth. Split into: useUserData hook, UserProfileView component, AuthProvider.",
+      "tags": ["solid", "srp", "architecture"],
+      "weight": 8
+    },
+    {
+      "id": "solid-002",
+      "category": "architecture",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "How does Dependency Inversion Principle apply to React?",
+      "code": "const Component = ({ apiService }) => { };",
+      "options": [
+        "Depend on abstractions (props, context, interfaces) not concrete implementations",
+        "Never use dependencies",
+        "Install more npm packages",
+        "Only use Redux"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DIP: high-level modules shouldn't depend on low-level modules. Both depend on abstractions. In React: inject dependencies via props/context, not instantiate directly. Enables testing (mock injection), flexibility.",
+      "tags": ["solid", "dip", "react"],
+      "weight": 8
+    },
+    {
+      "id": "fp-001",
+      "category": "javascript",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is a pure function?",
+      "code": "const add = (a, b) => a + b;",
+      "options": [
+        "No side effects, same input → same output, doesn't mutate",
+        "Any function is pure",
+        "Functions without return",
+        "Only arrow functions"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Pure function: 1) Same inputs → same output (deterministic), 2) No side effects (no mutations, API calls, console.log). Benefits: testable, predictable, cacheable, parallelizable. React prefers pure functions.",
+      "tags": ["functional-programming", "pure-functions", "javascript"],
+      "weight": 7
+    },
+    {
+      "id": "fp-002",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is currying?",
+      "code": "const add = (a) => (b) => a + b;",
+      "options": [
+        "Transforms f(a, b, c) into f(a)(b)(c) - partial application",
+        "Indian food technique",
+        "For loop optimization",
+        "Async function pattern"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Currying: transforms multi-arg function into sequence of single-arg functions. Enables partial application (fix some args, return new function). Use: reusable configurations, function composition, point-free style.",
+      "tags": ["functional-programming", "currying", "javascript"],
+      "weight": 7
+    },
+    {
+      "id": "next-001",
+      "category": "nextjs",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between SSR and SSG in Next.js?",
+      "options": [
+        "SSR: renders on each request. SSG: pre-renders at build",
+        "No difference",
+        "SSG is deprecated",
+        "SSR is always faster"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SSR (Server-Side Rendering): generates HTML on each request, fresh data, slower TTFB. SSG (Static Site Generation): generates HTML at build time, fast, stale data. ISR combines both (revalidate). Choose based on data freshness needs.",
+      "tags": ["nextjs", "ssr", "ssg"],
+      "weight": 9
+    },
+    {
+      "id": "next-002",
+      "category": "nextjs",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What are Server Components in Next.js 13+?",
+      "options": [
+        "Components that run on server, reduce client bundle, access backend directly",
+        "Deprecated feature",
+        "Same as SSR",
+        "Only for API routes"
+      ],
+      "correctAnswer": 0,
+      "explanation": "React Server Components: default in Next.js 13+ App Router. Run on server, zero JS to client, can access DB directly. Client Components (use client) for interactivity. RSC reduces bundle size, improves performance.",
+      "tags": ["nextjs", "react", "server-components"],
+      "weight": 10
+    },
+    {
+      "id": "rn-001",
+      "category": "react-native",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is the React Native 'Bridge' and why is it a bottleneck?",
+      "options": [
+        "It serializes messages between JS thread and Native thread (JSON)",
+        "It connects to the internet",
+        "It bridges Redux and React",
+        "It is a UI component"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Bridge asynchronously sends serialized JSON messages between the JS thread (React) and the Main thread (UI/Native). High traffic (e.g., rapid animations) can clog the bridge, causing dropped frames. New Architecture (JSI/Fabric) solves this.",
+      "tags": ["react-native", "architecture", "performance"],
+      "weight": 9
+    },
+    {
+      "id": "rn-002",
+      "category": "react-native",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "Which component would you use for a long list of data in React Native?",
+      "options": [
+        "FlatList or SectionList",
+        "ScrollView",
+        "View with map",
+        "Div"
+      ],
+      "correctAnswer": 0,
+      "explanation": "FlatList virtualizes items (only renders what's on screen), handling memory efficiently for long lists. ScrollView renders ALL children at once, causing memory issues with large datasets.",
+      "tags": ["react-native", "components", "performance"],
+      "weight": 7
+    },
+    {
+      "id": "expo-001",
+      "category": "react-native",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is the main benefit of using Expo over CLI?",
+      "options": [
+        "Simplifies development with pre-configured tools (Go app, OTA updates, EAS)",
+        "It is faster at runtime",
+        "It supports more native modules",
+        "It has no limitations"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Expo manages the native build complexity. Expo Go allows testing without compiling. EAS (Expo Application Services) handles building and submitting to stores. The trade-off is slightly less flexibility with custom native code (though Dev Clients solve this).",
+      "tags": ["react-native", "expo", "tooling"],
+      "weight": 5
+    },
+    {
+      "id": "web3-001",
+      "category": "web3",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between web3.js and ethers.js?",
+      "options": [
+        "ethers.js is lighter, better typed, more modern. web3.js is older",
+        "No difference",
+        "web3.js is deprecated",
+        "ethers.js only for Bitcoin"
+      ],
+      "correctAnswer": 0,
+      "explanation": "web3.js: older, heavier, callback-heavy. ethers.js: modern, lightweight, async/await, better TypeScript support, human-readable ABIs. Most new projects use ethers.js or viem.",
+      "tags": ["web3", "blockchain", "ethereum"],
+      "weight": 6
+    },
+    {
+      "id": "web3-002",
+      "category": "web3",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What is a Smart Contract?",
+      "options": [
+        "Self-executing contract with the terms directly written into code on the blockchain",
+        "A legal document PDF",
+        "A JavaScript promise",
+        "A database trigger"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A Smart Contract is immutable code deployed to a blockchain (like Ethereum) that executes automatically when conditions are met. It powers DApps (Decentralized Apps).",
+      "tags": ["web3", "blockchain", "smart-contracts"],
+      "weight": 7
+    },
+    {
+      "id": "memory-001",
+      "category": "performance",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What causes memory leaks in JavaScript?",
+      "options": [
+        "Forgotten timers, closures holding references, detached DOM nodes",
+        "Using too many variables",
+        "Writing functions",
+        "Memory leaks are impossible in JS"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Common leaks: 1) setInterval not cleared, 2) Closures holding large objects, 3) Event listeners not removed, 4) Detached DOM nodes, 5) Global variables. Use WeakMap/WeakSet, cleanup in useEffect.",
+      "tags": ["javascript", "memory", "performance"],
+      "weight": 8
+    },
+    {
+      "id": "module-001",
+      "category": "javascript",
+      "difficulty": "senior",
+      "type": "multiple-choice",
+      "question": "What's the difference between CommonJS and ES Modules?",
+      "code": "require('./module') vs import module from './module.js'",
+      "options": [
+        "CommonJS: synchronous, runtime. ESM: async, static analysis (tree shaking)",
+        "No difference",
+        "CommonJS is newer",
+        "ESM is deprecated"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CommonJS: Node.js default, require() is sync function, runtime resolution, no tree shaking. ES Modules: static import/export, async loading, tree shakeable, browser native. Node.js supports both.",
+      "tags": ["javascript", "modules", "commonjs"],
+      "weight": 7
+    },
+    {
+      "id": "soft-001",
+      "category": "soft-skills",
+      "difficulty": "middle",
+      "type": "multiple-choice",
+      "question": "What is the STAR method for behavioral interviews?",
+      "options": [
+        "Situation, Task, Action, Result",
+        "Stop, Think, Act, Review",
+        "Start, Test, Analyze, Repeat",
+        "System, Technology, Architecture, React"
+      ],
+      "correctAnswer": 0,
+      "explanation": "STAR is a structured way to answer behavioral questions (e.g., 'Tell me about a time you failed'). Situation (context), Task (your goal), Action (what YOU did), Result (outcome/metrics).",
+      "tags": ["soft-skills", "interview", "communication"],
+      "weight": 5
+    }
+  ]
+}

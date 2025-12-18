@@ -1,0 +1,28 @@
+@import '@/presentation/styles/module-imports';
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin-bottom: $spacing-8;
+}
+
+.placeholder {
+  padding: $spacing-16 $spacing-8;
+  text-align: center;
+}
+
+.icon {
+  margin: 0 auto $spacing-6;
+  color: $color-cyber-cyan;
+}
+
+.placeholderTitle {
+  font-size: $font-size-2xl;
+  color: $color-white;
+  margin-bottom: $spacing-2;
+}
+
+.placeholderText {
+  color: $color-slate-400;
+}
