@@ -1,4 +1,4 @@
-# 🧠 Quiz-It: Senior Software Engineer Interview Trainer
+# 🧠 Senior Software Engineer Interview Trainer
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
