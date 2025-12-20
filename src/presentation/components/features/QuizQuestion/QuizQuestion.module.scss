@@ -156,7 +156,7 @@
   gap: $spacing-4;
   padding: $spacing-4;
   border-radius: $radius-xl;
-  border: 1px solid rgba($color-white, 0.1);
+  border: 2px solid rgba($color-white, 0.1); // Make base border 2px to match selected state
   background-color: rgba($color-white, 0.05);
   cursor: pointer;
   @include transition;
@@ -168,7 +168,7 @@
   }
 
   &.selected {
-    border: 2px solid $color-cyber-cyan;
+    border: 2px solid $color-cyber-cyan; // Matches base border width
     background-color: rgba($color-cyber-cyan, 0.1);
     box-shadow: 0 0 20px rgba($color-cyber-cyan, 0.15);
   }

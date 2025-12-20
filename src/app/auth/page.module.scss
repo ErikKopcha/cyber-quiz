@@ -1,0 +1,230 @@
+@import '@/presentation/styles/module-imports';
+
+.authPage {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-8;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top, rgba($color-cyber-cyan, 0.15) 0%, $color-background 50%),
+    radial-gradient(ellipse at bottom, rgba($color-cyber-pink, 0.1) 0%, $color-background 50%);
+}
+
+// Background Effects
+.backgroundGrid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba($color-cyber-cyan, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($color-cyber-cyan, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  animation: gridScroll 20s linear infinite;
+}
+
+@keyframes gridScroll {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.glowTop {
+  position: fixed;
+  top: -200px;
+  right: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba($color-cyber-cyan, 0.5) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.glowBottom {
+  position: fixed;
+  bottom: -200px;
+  left: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba($color-cyber-pink, 0.4) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  animation: pulse 4s ease-in-out infinite 2s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// Loading State
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: $spacing-4;
+  color: $color-cyber-cyan;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid $alpha-hover;
+  border-top-color: $color-cyber-cyan;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Auth Container
+.authContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  background: rgba($color-surface, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba($color-cyber-cyan, 0.3);
+  border-radius: $radius-lg;
+  padding: $spacing-10 $spacing-8;
+  box-shadow:
+    0 8px 32px rgba($color-black, 0.6),
+    0 0 40px rgba($color-cyber-cyan, 0.15);
+}
+
+// Logo Section
+.logoSection {
+  text-align: center;
+  margin-bottom: $spacing-8;
+}
+
+.logoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, $color-cyber-cyan, $color-cyber-pink);
+  border-radius: $radius-md;
+  margin-bottom: $spacing-4;
+  position: relative;
+  animation: logoFloat 3s ease-in-out infinite;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, $color-cyber-cyan, $color-cyber-pink);
+    border-radius: $radius-md;
+    filter: blur(8px);
+    opacity: 0.5;
+    z-index: -1;
+  }
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.logoInner {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-background;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin-bottom: $spacing-2;
+
+  @include breakpoint(mobile) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.highlight {
+  color: $color-cyber-cyan;
+  text-shadow: 0 0 20px rgba($color-cyber-cyan, 0.5);
+}
+
+.subtitle {
+  font-size: $font-size-base;
+  color: $color-slate-400;
+}
+
+// Tabs
+.tabs {
+  display: flex;
+  gap: $spacing-2;
+  margin-bottom: $spacing-8;
+  background-color: rgba($color-cyber-cyan, 0.05);
+  padding: $spacing-2;
+  border-radius: $radius-md;
+}
+
+.tab,
+.tabActive {
+  flex: 1;
+  padding: $spacing-3 $spacing-4;
+  background-color: transparent;
+  border: none;
+  border-radius: $radius-sm;
+  color: $color-slate-400;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  @include transition(all, 200ms);
+
+  &:hover {
+    color: $color-white;
+    background-color: rgba($color-cyber-cyan, 0.1);
+  }
+}
+
+.tabActive {
+  background-color: rgba($color-cyber-cyan, 0.2);
+  color: $color-cyber-cyan;
+  box-shadow: 0 0 15px rgba($color-cyber-cyan, 0.3);
+}
+
+// Form Container
+.formContainer {
+  margin-bottom: $spacing-6;
+}
+
+// Footer
+.footer {
+  text-align: center;
+  padding-top: $spacing-6;
+  border-top: 1px solid rgba($color-cyber-cyan, 0.1);
+}
+
+.footerText {
+  font-size: $font-size-xs;
+  color: $color-slate-500;
+}

@@ -2,14 +2,15 @@
 // TYPOGRAPHY - Font Stacks and Sizes
 // ========================================
 
-// Font Families
+// Font Families (Cyberpunk theme)
 $font-sans:
-  'Inter',
+  var(--font-rajdhani),
   -apple-system,
   BlinkMacSystemFont,
   'Segoe UI',
   Roboto,
   sans-serif;
+$font-display: var(--font-orbitron), 'Rajdhani', sans-serif; // For headings and accent text
 $font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
 // Font Weights

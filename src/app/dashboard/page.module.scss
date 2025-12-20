@@ -100,7 +100,7 @@
   }
 }
 
-.alertCard {
+.challengeCard {
   grid-column: span 1;
 
   @include respond-to-md {
@@ -266,43 +266,62 @@
   }
 }
 
-// Alert card
-.alertContent {
+// Weekly Challenge Card
+.challengeCard {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.challengeHeader {
+  display: flex;
   justify-content: space-between;
-  gap: $spacing-4;
+  align-items: center;
+  margin-bottom: $spacing-4;
 }
 
-.alertInfo {
-  flex: 1;
-}
-
-.alertTitle {
+.challengeTitleWrapper {
   display: flex;
   align-items: center;
-  gap: $spacing-2;
-  margin-bottom: $spacing-1;
-
-  .icon {
-    color: $color-warning;
-  }
-
-  .text {
-    font-size: $font-size-sm;
-    font-weight: $font-weight-bold;
-    color: $color-white;
-    text-transform: uppercase;
-    letter-spacing: $letter-spacing-wider;
-  }
+  gap: $spacing-3;
 }
 
-.alertDescription {
+.challengeIcon {
+  color: $color-cyber-pink;
+}
+
+.challengeTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.challengeDescription {
   font-size: $font-size-sm;
   color: $color-slate-400;
+  margin-bottom: $spacing-6;
+  max-width: 90%;
+}
 
-  .highlight {
-    color: $color-white;
-    font-weight: $font-weight-medium;
-  }
+.challengeProgressContainer {
+  width: 100%;
+}
+
+.challengeStatsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $spacing-2;
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+}
+
+.challengeCount {
+  color: $color-slate-300;
+}
+
+.challengeXp {
+  color: $color-cyber-pink;
+  font-weight: $font-weight-bold;
 }

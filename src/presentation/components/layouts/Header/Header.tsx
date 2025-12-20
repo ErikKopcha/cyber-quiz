@@ -1,5 +1,7 @@
 'use client';
 
+import { ROUTES } from '@/constants/routes';
+import { AuthButton } from '@/presentation/components/features/AuthButton';
 import clsx from 'clsx';
 import { Terminal } from 'lucide-react';
 import Link from 'next/link';
@@ -12,8 +14,8 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { label: 'Dashboard', href: '/dashboard' },
-  { label: 'Quests', href: '/quests' },
+  { label: 'Dashboard', href: ROUTES.DASHBOARD },
+  { label: 'Quests', href: ROUTES.QUESTS },
 ];
 
 export const Header = () => {
@@ -22,7 +24,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       {/* Logo */}
-      <Link href="/dashboard" className={styles.logo}>
+      <Link href={ROUTES.DASHBOARD} className={styles.logo}>
         <div className={styles.logoIcon}>
           <Terminal size={20} />
         </div>
@@ -46,20 +48,9 @@ export const Header = () => {
         ))}
       </nav>
 
-      {/* User Profile */}
+      {/* Authentication */}
       <div className={styles.userSection}>
-        <div className={styles.userInfo}>
-          <div className={styles.userRank}>LVL 5 Netrunner</div>
-          <div className={styles.userName}>Alex Dev</div>
-        </div>
-        <div className={styles.userAvatar}>
-          <img
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-            alt="User Avatar"
-            className={styles.avatarImage}
-          />
-          <div className={styles.onlineIndicator} />
-        </div>
+        <AuthButton />
       </div>
     </header>
   );

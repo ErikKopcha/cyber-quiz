@@ -44,12 +44,7 @@
       "difficulty": "middle",
       "type": "multiple-choice",
       "question": "Which HTTP method is 'Idempotent'?",
-      "options": [
-        "POST",
-        "PUT",
-        "PATCH (usually)",
-        "Connect"
-      ],
+      "options": ["POST", "PUT", "PATCH (usually)", "Connect"],
       "correctAnswer": 1,
       "explanation": "PUT is idempotent, meaning making the same request multiple times has the same effect as making it once (replaces resource). POST is NOT idempotent (creates multiple resources).",
       "tags": ["http", "api", "rest"],
@@ -95,12 +90,7 @@
       "difficulty": "middle",
       "type": "multiple-choice",
       "question": "Which DNS record type is used to map a hostname to an IPv4 address?",
-      "options": [
-        "AAAA Record",
-        "CNAME Record",
-        "A Record",
-        "MX Record"
-      ],
+      "options": ["AAAA Record", "CNAME Record", "A Record", "MX Record"],
       "correctAnswer": 2,
       "explanation": "A Record maps a hostname to an IPv4 address. AAAA maps to IPv6. CNAME maps an alias to another canonical name. MX is for mail exchange.",
       "tags": ["dns", "networking"],
@@ -183,12 +173,7 @@
       "type": "multiple-choice",
       "question": "Which meta tag ensures proper rendering on mobile devices?",
       "code": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-      "options": [
-        "charset",
-        "viewport",
-        "keywords",
-        "description"
-      ],
+      "options": ["charset", "viewport", "keywords", "description"],
       "correctAnswer": 1,
       "explanation": "The viewport meta tag controls layout on mobile browsers. Without it, mobile browsers render pages at desktop width and scale them down (making text unreadable).",
       "tags": ["html", "responsive", "mobile"],
@@ -337,7 +322,12 @@
       "type": "multiple-choice",
       "question": "What is Hoisting in JavaScript?",
       "code": "console.log(x);\nvar x = 5;\n\nconsole.log(y);\nlet y = 10;",
-      "options": ["undefined, undefined", "undefined, ReferenceError", "5, 10", "ReferenceError, ReferenceError"],
+      "options": [
+        "undefined, undefined",
+        "undefined, ReferenceError",
+        "5, 10",
+        "ReferenceError, ReferenceError"
+      ],
       "correctAnswer": 1,
       "explanation": "Hoisting: declarations move to top. var hoisted with undefined value. let/const hoisted to Temporal Dead Zone (TDZ) - accessing before declaration throws ReferenceError.",
       "tags": ["javascript", "hoisting", "variables"],
@@ -680,12 +670,7 @@
       "difficulty": "middle",
       "type": "multiple-choice",
       "question": "What is the Big O complexity of QuickSort in the average case?",
-      "options": [
-        "O(n log n)",
-        "O(n^2)",
-        "O(n)",
-        "O(log n)"
-      ],
+      "options": ["O(n log n)", "O(n^2)", "O(n)", "O(log n)"],
       "correctAnswer": 0,
       "explanation": "QuickSort is O(n log n) on average. In the worst case (already sorted array with bad pivot), it can degrade to O(n^2).",
       "tags": ["algorithms", "sorting", "complexity"],
@@ -1195,12 +1180,7 @@
       "difficulty": "middle",
       "type": "multiple-choice",
       "question": "Which component would you use for a long list of data in React Native?",
-      "options": [
-        "FlatList or SectionList",
-        "ScrollView",
-        "View with map",
-        "Div"
-      ],
+      "options": ["FlatList or SectionList", "ScrollView", "View with map", "Div"],
       "correctAnswer": 0,
       "explanation": "FlatList virtualizes items (only renders what's on screen), handling memory efficiently for long lists. ScrollView renders ALL children at once, causing memory issues with large datasets.",
       "tags": ["react-native", "components", "performance"],

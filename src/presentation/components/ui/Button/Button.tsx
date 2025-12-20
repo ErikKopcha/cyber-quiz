@@ -10,6 +10,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   fullWidth?: boolean;
   iconOnly?: boolean;
+  icon?: ReactNode;
   children: ReactNode;
 }
 
@@ -18,6 +19,7 @@ export const Button = ({
   size = 'md',
   fullWidth = false,
   iconOnly = false,
+  icon,
   className,
   children,
   ...props
@@ -36,6 +38,7 @@ export const Button = ({
       )}
       {...props}
     >
+      {icon}
       {children}
     </button>
   );

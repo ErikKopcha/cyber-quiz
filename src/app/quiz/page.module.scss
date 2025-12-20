@@ -41,13 +41,14 @@
 
 // Quiz Results
 .results {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
 
 .resultsCard {
   padding: $spacing-12 $spacing-8;
+  margin-bottom: $spacing-8;
 }
 
 .resultsIcon {
@@ -127,4 +128,184 @@
   display: flex;
   gap: $spacing-3;
   justify-content: center;
+}
+
+// ========================================
+// REVIEW SECTION
+// ========================================
+
+.reviewSection {
+  text-align: left;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
+
+  .reviewTitle {
+    font-size: $font-size-xl;
+    color: $color-white;
+    margin-bottom: $spacing-6;
+    padding-left: $spacing-3;
+    border-left: 4px solid $color-cyber-cyan;
+    font-weight: $font-weight-bold;
+  }
+
+  .reviewList {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+
+  .reviewCard {
+    position: relative;
+    overflow: hidden;
+    padding: $spacing-6;
+    background-color: rgba($color-slate-900, 0.6);
+  }
+
+  .reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $spacing-4;
+    margin-bottom: $spacing-4;
+
+    .questionNumber {
+      font-family: $font-mono;
+      color: $color-slate-500;
+      font-size: $font-size-sm;
+      background: rgba($color-white, 0.05);
+      padding: $spacing-1 $spacing-2;
+      border-radius: $radius-sm;
+    }
+
+    .questionText {
+      flex: 1;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+      color: $color-white;
+    }
+
+    .iconSuccess {
+      color: $color-success;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 5px rgba($color-success, 0.5));
+    }
+
+    .iconError {
+      color: $color-error;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 5px rgba($color-error, 0.5));
+    }
+  }
+
+  .codeBlock {
+    background-color: #0d1117; // GitHub dark bg
+    padding: $spacing-4;
+    border-radius: $radius-md;
+    margin: $spacing-2 0 $spacing-4;
+    overflow-x: auto;
+    border: 1px solid rgba($color-white, 0.1);
+
+    code {
+      font-family: $font-mono;
+      font-size: $font-size-sm;
+      color: #c9d1d9;
+    }
+  }
+
+  .optionsList {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+    margin-bottom: $spacing-6;
+  }
+
+  .option {
+    padding: $spacing-3 $spacing-4;
+    border-radius: $radius-md;
+    background: rgba($color-white, 0.03);
+    border: 1px solid transparent;
+    color: $color-slate-300;
+    display: flex;
+    align-items: center;
+    font-size: $font-size-sm;
+    transition: all 0.2s ease;
+
+    &.optionCorrect {
+      // User selected correct answer
+      background: rgba($color-success, 0.15);
+      border-color: rgba($color-success, 0.4);
+      color: lighten($color-success, 10%);
+    }
+
+    &.optionWrong {
+      // User selected wrong answer
+      background: rgba($color-error, 0.15);
+      border-color: rgba($color-error, 0.4);
+      color: lighten($color-error, 10%);
+    }
+
+    &.optionIdeal {
+      // The correct answer (when user picked wrong)
+      background: rgba($color-success, 0.05);
+      border-color: rgba($color-success, 0.3);
+      color: $color-success;
+      border-style: dashed;
+    }
+  }
+
+  .explanation {
+    background: rgba($color-cyber-cyan, 0.08);
+    border-left: 2px solid $color-cyber-cyan;
+    padding: $spacing-4;
+    border-radius: 0 $radius-sm $radius-sm 0;
+
+    .explanationLabel {
+      display: flex;
+      align-items: center;
+      gap: $spacing-2;
+      color: $color-cyber-cyan;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      margin-bottom: $spacing-2;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: $color-slate-300;
+      font-size: $font-size-sm;
+      line-height: 1.6;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include respond-to-sm {
+  .resultsScore {
+    font-size: 3rem;
+  }
+
+  .resultsStats {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewHeader {
+    flex-direction: column;
+
+    .iconSuccess,
+    .iconError {
+      align-self: flex-end;
+      margin-top: -24px;
+    }
+  }
 }

@@ -7,7 +7,8 @@
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh; // Fixed height to viewport
+  overflow: hidden; // Prevent body scroll
   background-color: $color-dark-bg;
 }
 

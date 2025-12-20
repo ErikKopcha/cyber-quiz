@@ -1,0 +1,149 @@
+@import '@/presentation/styles/module-imports';
+
+.form {
+  width: 100%;
+}
+
+// Error Message
+.error {
+  padding: $spacing-4;
+  background-color: rgba($color-error, 0.1);
+  border: 1px solid rgba($color-error, 0.3);
+  border-radius: $radius-md;
+  margin-bottom: $spacing-6;
+  animation: errorSlide 0.3s ease-out;
+
+  p {
+    font-size: $font-size-sm;
+    color: $color-error;
+    margin: 0;
+  }
+}
+
+@keyframes errorSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Google Button
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+// Divider
+.divider {
+  position: relative;
+  text-align: center;
+  margin: $spacing-6 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba($color-cyber-cyan, 0.3));
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, transparent, rgba($color-cyber-cyan, 0.3));
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    padding: 0 $spacing-4;
+    font-size: $font-size-sm;
+    color: $color-slate-400;
+    background-color: rgba($color-surface, 0.8);
+  }
+}
+
+// Input Group
+.inputGroup {
+  margin-bottom: $spacing-5;
+}
+
+.label {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+  margin-bottom: $spacing-2;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: $spacing-4;
+  color: $color-slate-400;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-4 $spacing-4 $spacing-4 $spacing-12;
+  background-color: rgba($color-cyber-cyan, 0.05);
+  border: 1px solid rgba($color-cyber-cyan, 0.2);
+  border-radius: $radius-md;
+  color: $color-white;
+  font-size: $font-size-base;
+  @include transition(all, 200ms);
+
+  &::placeholder {
+    color: $color-slate-500;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-cyber-cyan;
+    box-shadow: 0 0 20px rgba($color-cyber-cyan, 0.3);
+    background-color: rgba($color-cyber-cyan, 0.08);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Form Animations
+.form :global(form) {
+  animation: formFade 0.4s ease-out;
+}
+
+@keyframes formFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

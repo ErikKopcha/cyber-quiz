@@ -1,0 +1,284 @@
+@import '@/presentation/styles/module-imports';
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-5;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid $alpha-hover;
+  border-top-color: $color-cyber-cyan;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.userMenu {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-2 $spacing-4;
+  background-color: $alpha-hover;
+  border: 1px solid rgba($color-cyber-cyan, 0.3);
+  border-radius: $radius-md;
+  color: $color-white;
+  cursor: pointer;
+  @include transition(all, 200ms);
+
+  &:hover {
+    background-color: rgba($color-cyber-cyan, 0.2);
+    border-color: rgba($color-cyber-cyan, 0.5);
+    box-shadow: 0 0 15px rgba($color-cyber-cyan, 0.2);
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid $color-cyber-cyan;
+}
+
+.avatarPlaceholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid $color-cyber-cyan;
+  background-color: rgba($color-cyber-cyan, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-cyber-cyan;
+}
+
+.userName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-3);
+  right: 0;
+  width: 280px;
+  background: rgba($color-dark-panel, 1);
+  border: 1px solid rgba($color-cyber-cyan, 0.4);
+  border-radius: $radius-lg;
+  box-shadow:
+    0 12px 40px rgba($color-black, 0.7),
+    0 0 30px rgba($color-cyber-cyan, 0.3),
+    inset 0 1px 0 rgba($color-cyber-cyan, 0.2);
+  z-index: 100;
+  animation: dropdownSlide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+
+  // Glow effect on top edge
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, $color-cyber-cyan 50%, transparent 100%);
+    opacity: 0.6;
+  }
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userInfo {
+  padding: $spacing-5;
+  border-bottom: 1px solid rgba($color-cyber-cyan, 0.15);
+  position: relative;
+
+  // Subtle gradient overlay
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($color-cyber-cyan, 0.4) 50%,
+      transparent 100%
+    );
+  }
+}
+
+.displayName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin-bottom: $spacing-1;
+  text-shadow: 0 0 10px rgba($color-cyber-cyan, 0.3);
+}
+
+.email {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+  margin-bottom: 0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.3px;
+  opacity: 0.8;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  margin-top: $spacing-4;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-2 $spacing-3;
+  background: linear-gradient(
+    90deg,
+    rgba($color-cyber-cyan, 0.05) 0%,
+    rgba($color-cyber-cyan, 0.12) 100%
+  );
+  border-radius: $radius-sm;
+  border-left: 2px solid rgba($color-cyber-cyan, 0.5);
+  position: relative;
+  overflow: hidden;
+  @include transition(all, 200ms);
+
+  // Animated glow effect on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($color-cyber-cyan, 0.15) 50%,
+      transparent 100%
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba($color-cyber-cyan, 0.08) 0%,
+      rgba($color-cyber-cyan, 0.15) 100%
+    );
+    border-left-color: rgba($color-cyber-cyan, 0.8);
+    box-shadow: 0 0 10px rgba($color-cyber-cyan, 0.2);
+    transform: translateX(2px);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: $color-slate-400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: $font-weight-medium;
+}
+
+.value {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: $color-cyber-cyan;
+  text-shadow: 0 0 8px rgba($color-cyber-cyan, 0.4);
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+}
+
+.signOutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  width: 100%;
+  padding: $spacing-4;
+  background: linear-gradient(135deg, rgba($color-error, 0.05) 0%, rgba($color-error, 0.08) 100%);
+  border: none;
+  border-top: 1px solid rgba($color-error, 0.2);
+  color: $color-error;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  @include transition(all, 200ms);
+
+  // Animated shine effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($color-error, 0.3) 50%,
+      transparent 100%
+    );
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($color-error, 0.15) 0%, rgba($color-error, 0.2) 100%);
+    color: lighten($color-error, 10%);
+    box-shadow:
+      inset 0 0 20px rgba($color-error, 0.2),
+      0 0 15px rgba($color-error, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

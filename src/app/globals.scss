@@ -10,7 +10,7 @@
 // BASE STYLES
 // ========================================
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 body {
   font-family: $font-sans;
@@ -19,18 +19,21 @@ body {
   @include gradient-radial($color-cyber-cyan, $color-cyber-pink, 0.15);
   background-attachment: fixed;
   @include custom-scrollbar;
+  letter-spacing: 0.3px; // Cyberpunk feel
 }
 
-// Typography defaults
+// Typography defaults - використовуємо Orbitron для заголовків
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: $font-display;
   color: $color-white;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
+  letter-spacing: 0.5px;
 }
 
 code,
@@ -49,6 +52,11 @@ pre {
 
 .font-mono {
   font-family: $font-mono;
+}
+
+.font-display {
+  font-family: $font-display;
+  letter-spacing: 0.5px;
 }
 
 .text-glow-cyan {

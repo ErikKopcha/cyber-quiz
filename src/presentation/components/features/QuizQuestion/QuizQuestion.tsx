@@ -12,6 +12,7 @@ interface QuizQuestionProps {
   currentQuestion: number;
   totalQuestions: number;
   onAnswer: (answer: number) => void;
+  disabled?: boolean;
 }
 
 export const QuizQuestion = ({
@@ -19,11 +20,12 @@ export const QuizQuestion = ({
   currentQuestion,
   totalQuestions,
   onAnswer,
+  disabled = false,
 }: QuizQuestionProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
   const handleSubmit = () => {
-    if (selectedAnswer !== null) {
+    if (selectedAnswer !== null && !disabled) {
       onAnswer(selectedAnswer);
       setSelectedAnswer(null);
     }
@@ -81,7 +83,8 @@ export const QuizQuestion = ({
                 name="answer"
                 value={index}
                 checked={selectedAnswer === index}
-                onChange={() => setSelectedAnswer(index)}
+                onChange={() => !disabled && setSelectedAnswer(index)}
+                disabled={disabled}
                 style={{ display: 'none' }}
               />
               <div className={styles.radio}>
@@ -98,8 +101,8 @@ export const QuizQuestion = ({
             <Flag size={16} />
             Report Issue
           </button>
-          <Button size="lg" onClick={handleSubmit} disabled={selectedAnswer === null}>
-            Confirm Answer
+          <Button size="lg" onClick={handleSubmit} disabled={selectedAnswer === null || disabled}>
+            {disabled ? 'Saving...' : 'Confirm Answer'}
             <ArrowRight size={18} />
           </Button>
         </div>

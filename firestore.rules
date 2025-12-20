@@ -1,0 +1,72 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function: Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function: Check if user owns the resource
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Users Collection
+    // Users can only read/write their own profile
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isAuthenticated() && request.auth.uid == userId
+        && request.resource.data.email is string
+        && request.resource.data.displayName is string
+        && request.resource.data.level is number
+        && request.resource.data.xp is number
+        && request.resource.data.level >= 1
+        && request.resource.data.xp >= 0;
+      allow update: if isOwner(userId)
+        && request.resource.data.email is string
+        && request.resource.data.displayName is string
+        && request.resource.data.level is number
+        && request.resource.data.xp is number
+        && request.resource.data.level >= 1
+        && request.resource.data.xp >= 0
+        && request.resource.data.xp >= resource.data.xp; // XP can only increase or stay same
+      allow delete: if isOwner(userId);
+    }
+
+    // Quiz Sessions Collection
+    // Users can only read/write their own quiz sessions
+    match /quizSessions/{sessionId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.keys().hasAll([
+          'userId', 'category', 'questionIds', 'answers',
+          'startedAt', 'totalScore', 'maxScore'
+        ])
+        && request.resource.data.questionIds is list
+        && request.resource.data.answers is list
+        && request.resource.data.totalScore is number
+        && request.resource.data.maxScore is number
+        && request.resource.data.totalScore >= 0
+        && request.resource.data.maxScore >= 0
+        && request.resource.data.totalScore <= request.resource.data.maxScore;
+      allow update: if isAuthenticated()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // User Progress Collection (Future implementation)
+    match /userProgress/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+    }
+
+    // Deny all other collections by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
