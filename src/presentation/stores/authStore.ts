@@ -6,10 +6,8 @@ import { auth } from '@/infrastructure/firebase/config';
 import { UserRepository } from '@/infrastructure/repositories/UserRepository';
 import { create } from 'zustand';
 
-// Helper functions for session cookie management via API
 async function setAuthCookie() {
   try {
-    // Get ID token from Firebase Auth
     const currentUser = auth?.currentUser;
     if (!currentUser) {
       console.warn('No current user to set cookie for');
@@ -55,7 +53,6 @@ interface AuthState {
   refreshUser: () => Promise<void>;
 }
 
-// Singleton repository instance
 const userRepository = new UserRepository();
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -65,7 +62,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   error: null,
   initialized: false,
 
-  // Refresh user data from Firestore
   refreshUser: async () => {
     const currentUser = get().user;
     if (!currentUser) return;
@@ -80,7 +76,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  // Sign in with Google
   signInWithGoogle: async () => {
     set({ loading: true, error: null });
     try {
@@ -99,7 +94,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  // Sign in with email
   signInWithEmail: async (email: string, password: string) => {
     set({ loading: true, error: null });
     try {
@@ -113,7 +107,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  // Sign up with email
   signUpWithEmail: async (email: string, password: string, displayName: string) => {
     set({ loading: true, error: null });
     try {
@@ -127,7 +120,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  // Sign out
   signOut: async () => {
     set({ loading: true, error: null });
     try {
@@ -141,7 +133,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  // Set user (used by auth state listener)
   setUser: async (user: User | null) => {
     if (user) {
       await setAuthCookie();
@@ -151,17 +142,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ user });
   },
 
-  // Set error
   setError: (error: string | null) => {
     set({ error });
   },
 
-  // Clear error
   clearError: () => {
     set({ error: null });
   },
 
-  // Initialize auth listener
   initialize: () => {
     if (get().initialized) {
       return;
@@ -169,12 +157,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     set({ initialized: true, loading: true });
 
-    // Subscribe to auth state changes
     userRepository.onAuthStateChanged(async (user) => {
-      // Get the CURRENT user from store (not closure variable)
-      const currentStoreUser = get().user;
-
-      // Set cookie via API route
       if (user) {
         await setAuthCookie();
       } else {

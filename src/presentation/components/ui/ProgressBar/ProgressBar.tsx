@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { HTMLAttributes } from 'react';
 import styles from './ProgressBar.module.scss';
 
-export type ProgressBarVariant = 'cyan' | 'pink' | 'success' | 'warning';
+export type ProgressBarVariant = 'cyan' | 'pink' | 'success' | 'warning' | 'purple';
 export type ProgressBarSize = 'sm' | 'md' | 'lg';
 
 export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
@@ -12,6 +12,7 @@ export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   size?: ProgressBarSize;
   label?: string;
   showValue?: boolean;
+  height?: number;
 }
 
 export const ProgressBar = ({

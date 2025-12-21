@@ -34,8 +34,8 @@ export default function DashboardPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [sessions, setSessions] = useState<QuizSession[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [refreshKey, setRefreshKey] = useState(0);
+  const [_loading, setLoading] = useState(true);
+  const [refreshKey, _setRefreshKey] = useState(0);
 
   // Fetch quiz history
   useEffect(() => {
@@ -288,7 +288,7 @@ export default function DashboardPage() {
               max={weeklyTarget}
               variant="purple"
               showValue={false}
-              height={12} // Thicker bar
+              height={12}
             />
             <div className={styles.challengeStatsRow}>
                 <span className={styles.challengeCount}>{weeklyProgress}/{weeklyTarget} Done</span>
