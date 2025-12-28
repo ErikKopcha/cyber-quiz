@@ -295,8 +295,6 @@ export class UserRepository implements IUserRepository {
     return firebaseOnAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         try {
-          // Use skipFirestore=true to avoid blocking on Firestore operations during auth state change
-          // User data will be synced in background
           const user = await this.firebaseUserToEntity(firebaseUser, true);
           callback(user);
         } catch (error) {

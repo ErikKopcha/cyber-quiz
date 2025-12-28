@@ -152,19 +152,36 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   initialize: () => {
     if (get().initialized) {
+      console.log('[AuthStore] Already initialized, skipping');
       return;
     }
 
+    console.log('[AuthStore] Starting initialization...');
     set({ initialized: true, loading: true });
 
     userRepository.onAuthStateChanged(async (user) => {
-      if (user) {
-        await setAuthCookie();
-      } else {
-        await removeAuthCookie();
-      }
 
-      set({ user, loading: false });
+      try {
+        if (user) {
+          console.log('[AuthStore] User found, setting auth cookie...');
+          await setAuthCookie();
+          console.log('[AuthStore] Auth cookie set successfully');
+        } else {
+          console.log('[AuthStore] No user found, removing auth cookie...');
+          await removeAuthCookie();
+          console.log('[AuthStore] Auth cookie removed successfully');
+        }
+
+        console.log('[AuthStore] Updating store state...');
+        set({ user, loading: false });
+        console.log('[AuthStore] Store state updated:', { hasUser: !!user, loading: false });
+      } catch (error) {
+        console.error('[AuthStore] Error in onAuthStateChanged callback:', error);
+        // Even on error, we must set loading to false to prevent infinite loader
+        set({ user: null, loading: false, error: error instanceof Error ? error.message : 'Unknown error' });
+      }
     });
+
+    console.log('[AuthStore] onAuthStateChanged listener registered');
   },
 }));
